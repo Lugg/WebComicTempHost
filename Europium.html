@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Europium</title>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css" type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js"></script>
+
+<style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    
+        .navbar {
+            z-index: 99 !important;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            margin-top: 25px;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .inactiveLink  {
+            opacity: 0.4;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .navbar a:hover {
+            cursor: pointer;
+        }
+        .ol-zoom{
+            margin-top: 75px;
+	    margin-right: 100px;
+        }
+        .ol-attribution{
+            visibility: hidden;
+        }
+</style>
+
+</head>
+<body>
+<div class="navbar">
+ <a href="index.html" ><img title="Startseite"  src="LandingPage/btn_home.png">  
+</a>
+  <a id="Glossar"  class="inactiveLink"><img title="Glossar" src="LandingPage/glossar_schwarz.png">   
+</a>
+  <a href="Wartezimmer.html"><img title="Wartezimmer" src="LandingPage/btn_wartezimmer.png">   
+</a>
+</div>
+
+<div id="map" class="map"></div>
+
+
+<script>
+var view = new ol.View({
+    center: [ -18476023.550531473, 17758217.539924346 ],
+    enableRotation: false,
+    resolution: 2566,
+    maxResolution: 4892,
+    minResolution: 610})
+var map = new ol.Map({
+  target: 'map',
+  controls: ol.control.defaults({
+  }),
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: 'Europium/{z}/{y}/{x}.jpg',
+        maxZoom: 8,
+        minZoom: 5
+      })
+    })
+  ],
+  view: view
+});
+
+</script>
+</body>
+</html>
